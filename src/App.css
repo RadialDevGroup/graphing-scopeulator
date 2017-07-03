@@ -22,3 +22,26 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.graph {
+  float: left;
+  width: 700px;
+}
+.list {
+  float: right;
+  width: 250px;
+  background: #b0b8cc;
+  text-align: left;
+  padding: 12px;
+  min-height: 500px;
+}
+.feature {
+  padding: 10px 0;
+}
+.feature input {
+  font-size: 16px;
+}
+
+.scheduleLines line {
+  stroke: #ccc;
+}
