@@ -22,7 +22,7 @@ class App extends Component {
 
   download = () => {
     const blob = new Blob([JSON.stringify(this.state)], {type: 'text/json'});
-    const projectName = this.state.projectName.replace(' ', '-') || 'project';
+    const projectName = this.state.projectName.replace(/\W/g, '-') || 'project';
     FileSaver.saveAs(blob, `${projectName}.json`);
   }
   load = (e, files) => {
