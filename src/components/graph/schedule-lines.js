@@ -3,7 +3,7 @@ import React from 'react';
 
 export default ({xScale, yScale, GRAPH_MARGIN, GRAPH_HEIGHT, GRAPH_WIDTH}) => {
   return (
-    <g className="scheduleLines">
+    <g className="schedule-lines">
       {_.times(4).map((i) => {
         const yAnchor = (i+0.5)*yScale + GRAPH_MARGIN;
         const xAnchor = ((5-(i+1))/2)*xScale + GRAPH_MARGIN;

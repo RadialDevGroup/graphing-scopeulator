@@ -1,21 +1,11 @@
 .App {
-  text-align: center;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 .App-logo {
+  float: left;
   animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-intro {
-  font-size: large;
+  height: 40px;
 }
 
 @keyframes App-logo-spin {
@@ -23,25 +13,140 @@
   to { transform: rotate(360deg); }
 }
 
+.App-header {
+  background-color: #222;
+  height: 40px;
+  padding: 0px;
+  color: white;
+}
+
+.App-header h2 {
+  margin: 0;
+  line-height: 32px;
+  font-size: 24px;
+  padding: 4px;
+  font-weight: 100;
+  color: #96bbce;
+  letter-spacing: 1.2px;
+}
+
+.App-header input.project-name {
+  background: none;
+  width: 400px;
+  font-size: 24px;
+  line-height: 30px;
+  padding: 0;
+  margin: 0;
+  color: #fff;
+  border: none;
+  border-bottom: 1px solid #96bbce;
+}
+
+.App-header .menu-right {
+  display: inline-block;
+  float: right;
+}
+._react-file-reader-input {
+  display: inline-block;
+}
+
+.App-header button {
+  background: #111;
+  border: none;
+  border-left: 1px solid #2e4550;
+  font-size: 18px;
+  font-weight: 200;
+  line-height: 32px;
+  padding: 4px 14px;
+  color: #96bbce;
+}
+.App-header button:hover {
+  background: #445;
+  color: #a6e1ff;
+}
+
+.App-intro {
+  font-size: large;
+}
+
 .graph {
-  float: left;
-  width: 700px;
+  position: absolute;
+  overflow: scroll;
+  background: #e8e8e8;
+  top: 40px;
+  bottom: 0;
+  left: 0;
+  right: 300px;
+}
+
+.responsive-svg {
+  height: 0;
+  overflow: visible;
+  position: relative;
+
+  svg {
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}
+.graph > .responsive-svg {
+  max-width: 600px;
+  margin: 0 auto;
 }
 .list {
-  float: right;
-  width: 250px;
-  background: #b0b8cc;
+  position: absolute;
+  overflow: scroll;
+  top: 40px;
+  bottom: 0;
+  right: 0;
+  width: 300px;
+  background: #223b46;
+  color: #96bbce;
   text-align: left;
-  padding: 12px;
   min-height: 500px;
 }
 .feature {
-  padding: 10px 0;
+  padding: 10px;
+  line-height: 24px;
+  border-bottom: 3px solid #507c92;
+}
+.feature-key {
+  color: #a6e1ff;
+  font-weight: bold;
 }
 .feature input {
   font-size: 16px;
+  background: none;
+  color: #fff;
+  border: none;
+  border-bottom: 1px solid #96bbce;
 }
-
-.scheduleLines line {
+.feature input.feature-name {
+  width: 250px;
+  font-weight: 300;
+}
+.list > button {
+  display: block;
+  width: 100%;
+  background: #507c92;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  text-align: left;
+}
+.list > button:hover {
+  background: #2e4550;
+}
+.schedule-lines line {
   stroke: #ccc;
+}
+line.axis {
+  stroke: #223b46;
+}
+text.feature {
+  fill: #0187cc;
 }
