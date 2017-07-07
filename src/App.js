@@ -42,6 +42,7 @@ class App extends Component {
   reset = () => this.setState(initialState)
 
   render() {
+    const {projectName, features} = this.state;
     return (
       <div className="App">
         <div className="App-header">
@@ -53,10 +54,17 @@ class App extends Component {
             <button onClick={this.reset}>reset</button>
           </div>
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>Graphing Scopeulator: <input className="project-name" placeholder="project name" value={this.state.projectName} onChange={this.setProjectName}/></h2>
+          <h2>
+            Graphing Scopeulator:&nbsp;
+            <input className="project-name"
+              placeholder="project name"
+              autoFocus={!projectName}
+              value={projectName}
+              onChange={this.setProjectName}/>
+          </h2>
         </div>
-        <Graph features={this.state.features}/>
-        <List features={this.state.features} setFeatures={this.setFeatures}/>
+        <Graph features={features}/>
+        <List features={features} setFeatures={this.setFeatures}/>
       </div>
     );
   }
