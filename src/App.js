@@ -13,9 +13,19 @@ const initialState = {
   projectName: '',
   features: []
 }
+const restoredState = localStorage.getItem('project') && JSON.parse(localStorage.getItem('project'));
 
 class App extends Component {
-  state = initialState
+  state = restoredState || initialState
+
+  componentDidMount() {
+    this._localSaveTimer = setInterval(() => {
+      localStorage.setItem('project', JSON.stringify(this.state))
+    }, 1000);
+  }
+  componentWillUnmount() {
+    clearTimeout(this._localSaveTimer);
+  }
 
   setProjectName = (e) => this.setState({projectName: e.target.value})
   setFeatures = (features=[]) => this.setState({features})
