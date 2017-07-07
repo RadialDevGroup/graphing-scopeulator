@@ -6,6 +6,8 @@ import logo from './logo.svg';
 import './normalize.css';
 import './App.css';
 
+import {appendItem} from './stateHelpers/feature';
+
 import Graph from './components/graph.js';
 import List from './components/list.js';
 
@@ -43,7 +45,17 @@ class App extends Component {
         try {
           this.setState(JSON.parse(result));
         } catch (error) {
-          alert('invalid file');
+          const lines = result.split(/\r\n|\r|\n/);
+          if (result.length > 10 && lines.length > 1) {
+            this.setState({
+              projectName: file.name.split('.')[0],
+              features: lines.reduce((list, line) => {
+                return line.length ? appendItem(list, {name: line}) : list;
+              }, [])
+            });
+          } else {
+            alert('invalid file');
+          }
         }
       }
       reader.readAsText(file);

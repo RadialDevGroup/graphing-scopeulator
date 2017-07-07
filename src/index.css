@@ -6,6 +6,8 @@ body {
 
 button, input {
   outline: none;
+}
+input[type="text"], input[type="number"] {
   -webkit-appearance: none;
 }
 button {
