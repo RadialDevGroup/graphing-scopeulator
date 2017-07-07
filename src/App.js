@@ -46,7 +46,7 @@ class App extends Component {
           this.setState(JSON.parse(result));
         } catch (error) {
           const lines = result.split(/\r\n|\r|\n/);
-          if (result.length > 10 && lines.length > 1) {
+          if (result.length > 10 && result.length < 10000 && lines.length > 1 && lines.length <= 26) {
             this.setState({
               projectName: file.name.split('.')[0],
               features: lines.reduce((list, line) => {

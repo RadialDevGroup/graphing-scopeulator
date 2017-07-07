@@ -7,8 +7,11 @@ body {
 button, input {
   outline: none;
 }
-input[type="text"], input[type="number"] {
-  -webkit-appearance: none;
+input:not([type="radio"]):not([type="checkbox"]) {
+  -webkit-appearance: none !important;
+  -webkit-border-radius: 0px;
+  padding-left: 0;
+  padding-right: 0;
 }
 button {
   cursor: pointer;
