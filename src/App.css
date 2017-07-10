@@ -155,6 +155,9 @@
 line.axis {
   stroke: #223b46;
 }
+.axis-label-symbol {
+  fill: #223b46;
+}
 text.feature {
   fill: #0187cc;
   font-weight: bold;
