@@ -6,15 +6,17 @@ import logo from './logo.svg';
 import './normalize.css';
 import './App.css';
 
-import {appendItem} from './stateHelpers/feature';
+import {appendItem, focusFirst} from './stateHelpers/feature';
+import {onEnter} from './helpers/events';
 
 import Graph from './components/graph.js';
 import List from './components/list.js';
 
+const KEY_S = 83
 const initialState = {
   projectName: '',
   features: []
-}
+};
 const restoredState = localStorage.getItem('project') && JSON.parse(localStorage.getItem('project'));
 
 class App extends Component {
@@ -24,6 +26,7 @@ class App extends Component {
     this._localSaveTimer = setInterval(() => {
       localStorage.setItem('project', JSON.stringify(this.state))
     }, 1000);
+    document.addEventListener('keydown', this.fileOperations, true);
   }
   componentWillUnmount() {
     clearTimeout(this._localSaveTimer);
@@ -63,8 +66,18 @@ class App extends Component {
   }
   reset = () => this.setState(initialState)
 
+  fileOperations = (e) => {
+    if (e.metaKey || e.ctrlKey) {
+      if (e.keyCode === KEY_S) {
+        e.preventDefault();
+        this.download();
+      }
+    }
+  }
+
   render() {
-    const {projectName, features} = this.state;
+    const {projectName, features=[]} = this.state;
+    const focusFirstFeature = () => this.setFeatures(features.length ? focusFirst(features) : appendItem(features));
     return (
       <div className="App">
         <div className="App-header">
@@ -82,7 +95,8 @@ class App extends Component {
               placeholder="project name"
               autoFocus={!projectName}
               value={projectName}
-              onChange={this.setProjectName}/>
+              onChange={this.setProjectName}
+              onKeyDown={onEnter(focusFirstFeature)}/>
           </h2>
         </div>
         <Graph features={features}/>

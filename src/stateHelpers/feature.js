@@ -21,3 +21,21 @@ export const newItem = (features, properties={}) => {
 export const appendItem = (features, properties={}) => {
   return [...features, newItem(features, properties)];
 }
+
+export const isLast = (features, key) => {
+  return _.findIndex(features, (f) => f.key === key) === features.length - 1;
+}
+
+export const focusNextItem = (features, key) => {
+  const nextKey = letters[letters.indexOf(key) + 1];
+  return features.map((feature) => ({...feature, focus: feature.key === nextKey}));
+}
+
+export const focusPreviousItem = (features, key) => {
+  const nextKey = letters[letters.indexOf(key) - 1];
+  return features.map((feature) => ({...feature, focus: feature.key === nextKey}));
+}
+
+export const focusFirst = ([first={}, ...features]=[]) => {
+  return [{...first, focus: true}, ...features];
+}
