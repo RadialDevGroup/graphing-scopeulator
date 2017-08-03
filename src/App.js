@@ -99,7 +99,7 @@ class App extends Component {
               onKeyDown={onEnter(focusFirstFeature)}/>
           </h2>
         </div>
-        <Graph features={features}/>
+        <Graph features={features} setFeatures={this.setFeatures}/>
         <List features={features} setFeatures={this.setFeatures}/>
       </div>
     );

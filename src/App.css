@@ -170,4 +170,8 @@ text.feature {
   stroke-width: 2px;
   text-anchor: middle;
   alignment-baseline: central;
+  cursor: pointer;
+}
+text.feature.highlight {
+  fill: red;
 }

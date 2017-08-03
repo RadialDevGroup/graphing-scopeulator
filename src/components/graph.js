@@ -1,9 +1,11 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
+import classnames from 'classnames';
 import Svg from './graph/svg';
 import ScheduleLines from './graph/schedule-lines';
 import DependencyLines from './graph/dependency-lines';
 import AxisLabels from './graph/axis-labels';
+import {highlightItem} from '../stateHelpers/feature';
 
 const GRAPH_WIDTH = 600;
 const GRAPH_HEIGHT = 600;
@@ -20,6 +22,9 @@ class Graph extends Component {
 
   toggleShowLines = () => this.setState({showLines: !this.state.showLines})
   toggleShowDependencies = () => this.setState({showDependencies: !this.state.showDependencies})
+  highlightFeature = (key) => () => {
+    this.props.setFeatures(highlightItem(this.props.features, key))
+  };
 
   render() {
     const {features=[]} = this.props;
@@ -36,10 +41,10 @@ class Graph extends Component {
             <AxisLabels xScale={xScale} yScale={yScale} GRAPH_MARGIN={GRAPH_MARGIN} GRAPH_HEIGHT={GRAPH_HEIGHT} GRAPH_WIDTH={GRAPH_WIDTH}/>
             <line x1={GRAPH_MARGIN} x2={GRAPH_MARGIN} y1={-500} y2={-GRAPH_MARGIN} className="axis"/>
             <line x1={GRAPH_MARGIN} x2={500} y1={-GRAPH_MARGIN} y2={-GRAPH_MARGIN} className="axis"/>
-            {filteredFeatures.map(({key, name, value, cost}) => {
+            {filteredFeatures.map(({key, name, value, cost, highlight}) => {
               const x = cost * xScale + GRAPH_MARGIN;
               const y = value * yScale + GRAPH_MARGIN;
-              return <text key={key} x={x} y={-y} className="feature" title={name}>{key}</text>;
+              return <text key={key} x={x} y={-y} className={classnames("feature", {"highlight": highlight})} title={name} onClick={this.highlightFeature(key)}>{key}</text>;
             })}
           </Svg>
         </div>

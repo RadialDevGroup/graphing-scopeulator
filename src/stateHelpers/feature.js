@@ -39,3 +39,7 @@ export const focusPreviousItem = (features, key) => {
 export const focusFirst = ([first={}, ...features]=[]) => {
   return [{...first, focus: true}, ...features];
 }
+
+export const highlightItem = (features, key) => {
+  return features.map((feature) => ({...feature, highlight: feature.key === key}));
+}
