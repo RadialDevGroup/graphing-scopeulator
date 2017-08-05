@@ -4,6 +4,7 @@ import Svg from './graph/svg';
 import ScheduleLines from './graph/schedule-lines';
 import DependencyLines from './graph/dependency-lines';
 import AxisLabels from './graph/axis-labels';
+import PriorityList from './priority-list';
 
 const GRAPH_WIDTH = 600;
 const GRAPH_HEIGHT = 600;
@@ -45,13 +46,17 @@ class Graph extends Component {
         </div>
         <label>
           <input type="checkbox" checked={showLines} onChange={this.toggleShowLines}/>&nbsp;
-          Show lines
+          Show priority
         </label>
         &nbsp;&nbsp;
         <label>
           <input type="checkbox" checked={showDependencies} onChange={this.toggleShowDependencies}/>&nbsp;
           Show dependencies
         </label>
+        {showLines && <div>
+          <h3>Priority List</h3>
+          <PriorityList features={features}/>
+        </div>}
       </div>
     );
   }
