@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import React from 'react';
 
-const ROTATION = -2.09;
+const ROTATION = -2.09; // -120deg in radians
 function prioritize({value, cost}) {
   return -cost * Math.sin(ROTATION) + value * Math.cos(ROTATION);
 }
