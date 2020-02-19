@@ -25,7 +25,7 @@ class Feature extends Component {
           onKeyDown={onEnter(focusNext, onDownArrow(focusNext, onUpArrow(focusPrevious)))}/><br/>
         Value: <input type="number" value={value} onChange={change('value')} min="0" max="4" step="0.1"/>
         Effort: <input type="number" value={cost} onChange={change('cost')} min="0" max="4" step="0.1"/>
-        Deps: <input type="text" value={dependencies} onChange={change('dependencies')}/>
+        Deps: <input type="text" className="feature-dependencies" value={dependencies} onChange={change('dependencies')}/>
         <button onClick={this.props.remove} className="button-delete">&times;</button>
       </div>
     );

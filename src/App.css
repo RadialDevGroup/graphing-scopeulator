@@ -126,8 +126,11 @@
   border-bottom: 1px solid #96bbce;
 }
 .feature input.feature-name {
-  width: 400px;
+  width: 375px;
   font-weight: 300;
+}
+.feature input.feature-dependencies {
+  width: 125px;
 }
 .feature .button-delete {
   background: #507c92;
